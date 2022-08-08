@@ -17,7 +17,7 @@
 
       {if channel_name == 'the_point'}
       <h1 class="detail-title">
-          {title} HELLO
+          {title}
       </h1>
       <div id="author">
           <strong>
@@ -30,14 +30,14 @@
           </strong>
       </div>
       <figure>
-          {exp:ce_img:single
-              src="{image_the_point limit='1'}{large_img}{/image_the_point}"
-              fallback_src="/assets/images/wabi/new-logo-mark-gray-newsfallback_760x400.png"
-              alt="{if caption_the_point}{caption_the_point}{/if}
-              {if caption_the_point==""}{title}{/if}"
-              title="{if caption_the_point}{caption_the_point}{/if} {if caption_the_point==""}{title}{/if}"
-              allow_scale_larger="no"
-              crop="yes"}
+    {exp:ce_img:single
+                src="{image_the_point limit='1'}{large_img}{/image_the_point}"
+                fallback_src="/assets/images/wabi/new-logo-mark-gray-newsfallback_760x400.png"
+                alt="{if caption_the_point}{caption_the_point}{if:else}HELLO{/if}
+                {if caption_the_point==""}{title}{/if}"
+                title="{if caption_the_point}{caption_the_point}{/if} {if caption_the_point==""}{title}{/if}"
+                allow_scale_larger="no"
+                crop="yes"}
       </figure>
       <figcaption>
           <p>
@@ -110,7 +110,7 @@
               {exp:ce_img:single
                   src="{image_news limit="1"}{image_src_new}{/image_news}"
                   fallback_src="/assets/images/wabi/new-logo-mark-gray-newsfallback_760x400.png"
-                  alt="{if image_news}{image_news}{image_alt}{/image_news}{/if} {if image_news==""}{title}{/if}"
+                  alt="Hard Coded"
                   title="
                   {if caption_news}{caption_news}{/if}
                   {if caption_news==""}{title}{/if}
