@@ -1,0 +1,74 @@
+<!-- 
+NOTES
+
+Edited template: graduate-programs/_program_embed
+
+https://staging.umb.edu/academics/graduate/programs
+https://staging.umb.edu/academics/graduate/programs/masters
+https://staging.umb.edu/academics/graduate/programs/doctoral
+
+image alt tag missing on Applied Economics, MA card
+Added an if else statement to add the current {title} if alt tag is missing
+
+embed for graduate programs:
+https://staging.umb.edu/control/index.php?/cp/design/template/edit/1636
+(search for 'graduate-programs')
+
+{exp:ce_img:pair src="{program_image}" width="512"}
+Plug-in CE Image
+https://docs.causingeffect.com/expressionengine/ce-image/user-guide/basics.html#tag-pair  
+
+
+graduate-programs/programs
+https://staging.umb.edu/control/index.php?/cp/design/template/edit/1639
+
+-->
+
+
+
+{exp:channel:entries
+  channel="graduate_programs"
+  dynamic="no"
+  orderby="title"
+  sort="asc"
+  category="{embed:category_id}"
+  limit="500"
+  disable="member_data|pagination"}
+  {exp:ce_cache:add_tag}{entry_id}{/exp:ce_cache:add_tag}
+<li class="card">
+  <a class="card-header" href="{program_link}" id="{exp:ce_str:ing url_title  separator='-' replace='.,?|,'}{title}{/exp:ce_str:ing}_{count}">
+      {if program_image}
+      {exp:ce_img:pair src="{program_image}" width="512"}
+      <img src="{made}"{if program_image_alt} alt="{program_image_alt}"{/if} width="{width}"> 
+      {/exp:ce_img:pair}
+      {/if}
+      <h3 class="card-title">
+          {title} HELLO
+          {if track}
+          <br/>
+          <h4 class="track">
+              <em>
+                  {track}
+              </em>
+          </h4>
+          {/if}
+      </h3>
+      {if modality != "on campus" && modality != "On Campus"}
+          <span>{modality}</span>
+      {/if}
+  </a>
+  <span></span>
+  <address>
+      {if contact_email}<a href="mailto:{contact_email}">{contact_email}</a>{/if}
+      {if contact_phone_number}<a href="tel:{contact_phone_number}">{contact_phone_number}</a>{/if}
+      {if program_director_name}
+      <span>Graduate Program Director:&nbsp;
+          {if url_for_bio}<a href="{url_for_bio}">{/if}
+      {program_director_name}
+      {if url_for_bio}</a>{/if}
+      {/if}
+      </span>
+  </address>
+</li>
+
+{/exp:channel:entries}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    {if structure:page:entry_id}
+    {exp:seo_lite entry_id="{structure:page:entry_id}"}
+    {if:elseif "{embed:page_title}"}
+    {exp:seo_lite title_override="{embed:page_title}"}
+    {if:else}
+    {exp:seo_lite entry_id="{embed:entry_id}"}
+    {/if}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PXJ923G');</script>
+    <!-- End Google Tag Manager -->
+    {if "{embed:entry_id}" != ""}
+    <meta name="entry_id" content="{embed:entry_id}">
+    {if:else}
+    <meta name="entry_id" content="{structure:page:entry_id}">
+    {/if}
+    <meta name="site_id" content="{site_id}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="https://www.umb.edu/assets/images/wabi/favicon.svg">
+    <link rel="icon" href="https://www.umb.edu/assets/images/wabi/favicon.png">
+    <link rel="mask-icon" href="https://www.umb.edu/assets/images/wabi/safari-pinned-tab.svg" color="#005a8b">
+    <link rel="apple-touch-icon" href="https://www.umb.edu/assets/images/wabi/apple-touch-icon.png" />
+    <link rel="goog-touch-icon" href="https://www.umb.edu/assets/images/wabi/google-touch-icon.png" />
+    <link rel="manifest" href="https://www.umb.edu/manifest.json">
+    <link rel="stylesheet" href="https://www.umb.edu/assets/kube/css/kube.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" />
+    <script src="https://use.fontawesome.com/72fbe63326.js"></script>
+    <link rel="stylesheet" href="https://www.umb.edu/assets/styles/smoothness/jquery-ui-1.8.14.custom.css">

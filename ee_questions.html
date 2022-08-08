@@ -1,0 +1,181 @@
+<!--  
+
+Wanted to go over Responsibilities and General Workflow questions - 
+
+- In general, my daily workflow will be looking up accessibility issues in Site Improve and fix them on the staging site, right?
+
+- What I've been doing - locating a page that needs changing in site improve then trying to locate the source for that age by searching for its templates. Is there an easier way to locate those source templates other than searching?
+
+Another issue (could be due to caching) I've been trying to find the source for the umb.edu News Detail page, I think I've finally found it but changes are not reflected on the site. Is there a site caching issue?
+
+- In term of moving the changes to the live site, should I wait until I have approval?
+
+- Is there a general sitemap that lays out all of the embeds, modules and templates?
+
+folder icon to the right - template entries
+
+staging branch -> staging server
+
+NOTES - 
+
+SI - structural
+not knee jerk, should be more planned
+-> Add a url to the Trello cards
+-> Folder icon in page listing 
+
+EE addon - list entries associated with each template
+
+*** Can ask questions via Trello card - track
+
+OTHER SPECIFIC QUESTIONS ###########
+
+If I have specific questions, can I contact one of you?
+
+- where are cell_x defined?
+
+what is default_site -> embed="default_site:global-rwd/global-head" etc ?
+
+
+
+what is {exp:structure:nav <- add-on?
+
+{title_permalink="news_articles/view"} defined in channel?
+title_permalink - from channel
+
+{exp:rss_parser url="http://www.beaconsathletics.com/landing/headlines-featured?feed=rss_2.0" limit="3" refresh="720"}
+
+FINISHED ########################
+
+Supplied image alt tag
+Edited template: graduate-programs/_program_embed
+
+https://staging.umb.edu/academics/graduate/programs
+https://staging.umb.edu/academics/graduate/programs/masters
+https://staging.umb.edu/academics/graduate/programs/doctoral
+https://staging.umb.edu/academics/graduate/programs/certificate
+
+Loading gif alt tag added on MasterPlan timeline
+
+https://www.umb.edu/masterplan_timeline
+
+
+Removing empty Header tags
+https://www.umb.edu/academics/graduate/programs/requirements
+
+    {if track}
+       <h4 class="track">
+          <em>
+             {track}
+          </em>
+        </h4>
+      {/if}
+
+NOTES ########################### 
+
+EMBEDDED PAGES
+**pages/dept_landing
+    - embed="default_site:global-rwd/global-head"
+    - embed="default_site:global-rwd/global-nav"
+    - embed="default_site:global-rwd/global-footer
+    - embed="default_site:modules/tiles"
+
+
+MODULES - 
+##modules/new-see-also  // if statments about social media
+##modules/tiles
+##modules/college_program_listing
+##modules/events_module
+##modules/news_module_simple
+
+##modules/bottom-modules-two-column  https://staging.umb.edu/control/index.php?/cp/design/template/edit/1180
+    - modules/tools_and_resources_module
+    - modules/flex_content_center
+
+##modules/center_bottom_modules: https://staging.umb.edu/control/index.php?/cp/design/template/edit/1174
+    (embeded modules)
+    - modules/tools_and_resources_module
+    - modules/center_footer_contact
+
+
+##modules/news_listing_body_with_variable
+
+** LAYOUTS
+
+##layouts/centers
+layouts/centers_faculty
+layouts/centers_staff
+layouts/dept
+
+
+
+related_categories_mode set in {exp:channel:entries related_categories_mode="yes"}
+
+{exp:channel:category_heading ... } // displays categories
+
+FORMS
+{exp:comment:form  ... }  // displaying comment forms
+{exp:comment:entries ... }
+
+SEARCH
+{exp:search:simple_form channel="news_articles"
+search_in="everywhere" result_page="site/search"} // for a search box
+{/exp:search:simple_form}
+{exp:search:search_results}
+... {title} ... {article_excerpt} etc.
+{/exp:search:search_results}
+
+Two types of conditionals - conditional global variables and channel entries conditional variables (only inside the Chanel Entires tag pair)
+
+
+
+URLs are built in segments, and are called: segment_1, segment_2 , segment_3 etc.
+
+Navigation conditional : 
+-->
+
+<ul>
+  <li><a {if segment_4 == "news"} class = "current" {/if} href="/index.php/news_articles/page/category/news"></a></li>
+</ul>
+
+<!-- 
+ 'no_results' works inside Channel Entires
+
+-->
+{if no_results}
+<p>
+  Be the first one to comment using the form below!
+</p>
+{/if}
+
+<!---
+
+  IN CAPS SECTION (continuing and professional studies)
+  _head
+  {exp:seo_lite entry_id="embed:entry_id"} Plugin for EE, adds social media markup
+
+{embed="caps/_head"
+    entry_id="{layout:entry_id}"  <-- what is 'entry_id'?
+    page_title="{layout:page_title}"}
+{layout:head}
+
+LAYOUTS
+
+--->
+<html> <!-- Header section-->
+  <head>
+    <title>News Site</title>
+  </head>
+  <body>
+    {layout:contents}
+  </body> <!-- Footer section -->
+</html>
+
+{layout="site/_html-layout"} <!-- to be injected into 'layout:contents' -->
+
+{exp:channel:entries channel="news"}
+  <h2>{title}</h2>
+  {summary}
+{/exp:channel:entries}
+
+
+

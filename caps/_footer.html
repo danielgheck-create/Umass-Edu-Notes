@@ -1,0 +1,94 @@
+<footer class="global-footer{if embed:footer_class} {embed:footer_class}{/if}" >
+  <div class="units-row footer footer-max">
+      <div class="unit-33 logo">
+          <a href="https://www.umb.edu"><img src="https://www.umb.edu/assets/images/wabi/new-umb-logo-blue-tm.svg"  alt="UMass Boston Logo Blue"></a>        </div>
+      <div class="unit-33" >
+          <ul>
+              <li><a href="{global:main_site_url}/accessibility_statement">Accessibility Statement</a></li>
+              <li><a href="{global:main_site_url}/crtix">ADA</a></li>
+              <li><a href="{global:main_site_url}/preparedness/closing">Campus Status</a></li>
+              <li><a href="{global:main_site_url}/text_only">Document Converter</a></li>
+              <li><a href="https://hr.umb.edu/">Employment</a></li>
+
+          </ul>
+      </div>
+      <div class="unit-33" >
+          <ul>
+              <li><a href="{global:main_site_url}/privacy_terms">Privacy & Terms</a></li>
+              <li><a href="{global:main_site_url}/the_university/student_consumer_information">Student Consumer Information</a></li>
+              <li><a href="{global:main_site_url}/preparedness">UMass Boston Alert</a></li>
+              <li><a href="//www.massachusetts.edu">UMass System</a></li>
+              <li><a href="{global:main_site_url}/contact">Contact UMass Boston</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class="footer-base">
+      <div class="units-row footer-base-inner">
+          <div class="unit-100">
+              <p>&copy; {current_time format="%Y"} University of Massachusetts Boston
+              </p>
+              <p >100 William T. Morrissey Blvd. Boston, MA 02125-3393 | <a href="tel:6172875000">Tel: 617.287.5000</a></p>
+              <div class="trademark" style="padding:6px 24px 0 24px; margin-top:12px;" ><p>  {trademark_text} </p></div>
+          </div>
+      </div>
+      
+  </div>
+</footer>
+<script type="text/javascript">
+  {if "{global:main_site_url}" != ""}
+  window.main_site_url = "{global:main_site_url}";
+  {if:else}
+  window.main_site_url = "https://www.umb.edu";
+  {/if}
+</script>
+<script src="{global:main_site_url}/assets/scripts/jquery.min.1.11.3.js"></script>
+<script src="{global:main_site_url}/assets/kube/js/kube.js"></script>
+
+{!-- Admissions pixel footer/source code --}
+{admissions_facebook_thank_you_pixel_footer}
+{!-- CAPS targeting pixel --}
+{caps_pixel_footer}
+
+{if segment_1 == "transfer-students"}
+
+<!-- BEGIN LivePerson Monitor. -->
+<script type="text/javascript">window.lpTag=window.lpTag||{},"undefined"==typeof window.lpTag._tagCount?(window.lpTag={site:'43402239'||"",section:lpTag.section||"",tagletSection:lpTag.tagletSection||null,autoStart:lpTag.autoStart!==!1,ovr:lpTag.ovr||{},_v:"1.8.0",_tagCount:1,protocol:"https:",events:{bind:function(t,e,i){lpTag.defer(function(){lpTag.events.bind(t,e,i)},0)},trigger:function(t,e,i){lpTag.defer(function(){lpTag.events.trigger(t,e,i)},1)}},defer:function(t,e){0==e?(this._defB=this._defB||[],this._defB.push(t)):1==e?(this._defT=this._defT||[],this._defT.push(t)):(this._defL=this._defL||[],this._defL.push(t))},load:function(t,e,i){var n=this;setTimeout(function(){n._load(t,e,i)},0)},_load:function(t,e,i){var n=t;t||(n=this.protocol+"//"+(this.ovr&&this.ovr.domain?this.ovr.domain:"lptag.liveperson.net")+"/tag/tag.js?site="+this.site);var a=document.createElement("script");a.setAttribute("charset",e?e:"UTF-8"),i&&a.setAttribute("id",i),a.setAttribute("src",n),document.getElementsByTagName("head").item(0).appendChild(a)},init:function(){this._timing=this._timing||{},this._timing.start=(new Date).getTime();var t=this;window.attachEvent?window.attachEvent("onload",function(){t._domReady("domReady")}):(window.addEventListener("DOMContentLoaded",function(){t._domReady("contReady")},!1),window.addEventListener("load",function(){t._domReady("domReady")},!1)),"undefined"==typeof window._lptStop&&this.load()},start:function(){this.autoStart=!0},_domReady:function(t){this.isDom||(this.isDom=!0,this.events.trigger("LPT","DOM_READY",{t:t})),this._timing[t]=(new Date).getTime()},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],hooks:lpTag.hooks||[],ev:lpTag.ev||[]},lpTag.init()):window.lpTag._tagCount+=1;</script>
+<!-- END LivePerson Monitor. -->
+
+{/if}
+
+<script type="text/javascript">
+  // SiteImprove
+  /*<![CDATA[*/
+  (function() {
+      var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+      sz.src = '//us1.siteimprove.com/js/siteanalyze_21258.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+  })();
+  /*]]>*/
+  // SiteImprove Brightcove integration
+  if(typeof window.brightcove!="undefined"&& typeof window._BCL_players=="undefined"){window._BCL_players={};document.write(unescape("%3Cscript src='https://www.umb.edu/assets/scripts/si-multi-plugin.js?v=2' type='text/javascript'%3E%3C/script%3E"))}
+</script>
+{!-- analytics google analytics is no more --}
+<!-- SiteImprove Ping Check -->
+
+<!-- VisitDays -->
+{!-- {visitdays_mobi} --}
+
+<!-- BEGIN LivePerson Monitor. -->
+{live_person_finaid}
+{live_person_bursar}
+{live_person_registrar}
+{live_person_it}
+<!-- END LivePerson Monitor. -->
+<!-- DO NOT EDIT BELOW THIS LINE -->
+<!-- AdmitHub Web Chat -->
+{admithub_coronavirus}
+{!-- admithub_admissions --}
+<!-- DO NOT EDIT ABOVE THIS LINE -->
+<!-- ScheduleOnce widget START -->
+{scheduleonce_admissions}
+<!-- ScheduleOnce widget END -->
+<!-- PlatformQ start -->
+{platformq_admissions}
+<!-- PlatformQ end -->

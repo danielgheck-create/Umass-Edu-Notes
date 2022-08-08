@@ -1,0 +1,83 @@
+{exp:ce_cache:stat:ic seconds="1800" tags="masterplan"}
+{embed="default_site:global-rwd/global-head"
+  stylesheet="/timeline/css/timeline.css"
+  body_class="masterplan"
+}
+<div id="load_global_alert"></div>
+{embed="default_site:global-rwd/global-nav" color="blue"}
+{embed="modules/masthead"
+  page_title="Master Plan Construction Timeline"
+}
+<div id="content" class="unit-100 content">
+  <div id="tlWrap">
+  <div class="timelineLoader">
+  <img src="/timeline/images/timeline/loadingAnimation.gif" alt="loading animation"/>
+  </div>
+  <div class="timelineLight tl fBg">
+  {exp:channel:entries channel="construction_updates" sort="asc" orderby="date_news" category="463" dynamic="off" disable="member_data|pagination" }
+  <div class="item" data-name="<small>{date_news format="%j"}</small>"  data-id="{date_news format="%d/%m/%Y"}" data-description="{date_news format="%m/%d/%Y"} - {title}">
+  {if image_news}
+  {image_news limit="1"}
+  <img class="tA" src="{image_src}" alt="{image_alt}" />
+  {/image_news}
+  {if:else}
+  <img class="tA" src="/timeline/images/umass_logo_white_200px.png" alt="Default Image" />
+  {/if}
+  <h2>{date_news format="%M %j, %Y"}</h2>
+  <span><strong>{title}</strong></span>
+  <div class="read_more" data-id="{date_news format="%d/%m/%Y"}">Read more</div>
+  </div>
+  <div class="item_open" data-id="{date_news format="%d/%m/%Y"}">
+
+  <div class="tbodyOpen">
+  {if image_news}
+  {image_news limit="1"}<img class="tB" src="{image_src}" alt="{image_alt}" />{/image_news}
+  {if:else}
+  <img class="tB" src="/timeline/images/umass_logo_white_200px.png" alt="Default Image" />
+  {/if}
+  <strong>{title}</strong>
+  {body_text_news}
+  <br />
+  {if related_media_news}
+  <ul>
+  {related_media_news limit="1"}
+  {if flickr_url}
+  <li style="float:left; margin:10px;"><a href="{flickr_url}" target="_blank" title="Related Flickr Set URL"><img src="{site_url}assets/styles/images/icons/flickr-lg.png"/> </a></li>
+  {/if}
+  {if youtube_url}
+  <li style="float:left; margin:10px;"><a href="{youtube_url}" target="_blank" title="Related YouTube Video URL"><img src="{site_url}assets/styles/images/icons/youtube-lg.png"/> </a></li>
+  {/if}
+  {if fb_url}
+  <li style="float:left; margin:10px;"><a href="{fb_url}" target="_blank" title="Related Facebook URL"><img src="{site_url}assets/styles/images/icons/facebook-lg.png"  /> </a></li>
+  {/if}
+  {if twitter_url}
+  <li style="float:left; margin:10px;"><a href="{twitter_url}" target="_blank" title=" Related Twitter Feed URL"><img src="{site_url}assets/styles/images/icons/twitter-lg.png"  /></a></li>
+  {/if}
+  {/related_media_news}
+  <br/>
+  </ul>
+  {/if}
+  <div style="clear:both;"></div>
+  </div>
+  </div>
+  {/exp:channel:entries}
+  </div> <!-- /END TIMELINE -->
+  </div><!--tlWrap-->
+</div>
+{embed="default_site:global-rwd/global-footer"}
+<script type="text/javascript" src="/timeline/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/timeline/js/jquery.timeline.js"></script>
+<script type="text/javascript" src="/timeline/js/image.js"></script>
+<script type="text/javascript" src="/timeline/js/lightbox.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	// light
+	$('.timelineLight').timeline({
+		openTriggerClass : '.read_more',
+		startItem : '07/12/2009', //dd/mm/yyyy
+    closeText : 'X',
+	});
+});
+</script>
+</body>
+</html>

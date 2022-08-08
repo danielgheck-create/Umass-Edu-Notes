@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+{exp:channel:entries entry_id="14871" limit="1"}
+{embed="embeds/.news_header" title="{title} - University of Massachusetts Boston"}
+<meta name="entry_id" content="14871"/>
+<style>
+	div.bGray p{ line-height: 17px!important; }
+</style>
+</head>
+<body>
+    <div class="container container_12 pR">
+	{embed="embeds/.news_topnav"}
+	<div class="clear"></div>
+	<!-- TEMPLATE: START -->
+
+		{exp:channel:entries entry_id="14871" limit="1"}
+	    	{nf_image}
+			<div class='grid_8 shrink1'>
+				<a href="{cell_3}">
+					<img src="{cell_1}" alt="{cell_2}" width="580" height="300">
+				</a>
+				
+				<div class="cap1">
+					<a href="{cell_3}"> {teaser}</a>
+				</div>
+			</div>
+	        {/nf_image}
+        {/exp:channel:entries}
+
+		<div class='grid_4 featurenewsbx'>
+			<h2 class="padB10">Top Stories</h2>
+			<ul id="rhsNews">
+				{exp:channel:entries channel="news" category="3" dynamic="off" limit="3" disable="categories|member_data|pagination"}
+
+				<li>
+					<a href="{path='news/detail/{url_title}'}"> 
+						{exp:ce_img:single src="{image_news}{image_src_new}{/image_news}" fallback_src="/editor_uploads/ce/fallback_images/fallback_news.png" alt="{title}" width="145" height="75" allow_scale_larger="yes" crop="yes"}{exp:char_limit total="100"}{title}{/exp:char_limit} &rsaquo;
+					</a>
+				</li>
+				<div class="clear"></div>
+ 
+				{/exp:channel:entries}
+ 
+			</ul>
+
+			<p class="allnews">
+				<a href="{site_url}news_events_media/news">More UMass Boston News &rsaquo;</a>
+			</p>
+
+		</div>
+
+		<div class="clear"></div>
+
+		<div class="grid_7 calTopmargin">
+			<h2 class="caltitle">Calendar</h2>
+
+			<table class="calendar">
+				<tbody>
+		    		<tr class="caltimes">
+						<td width="124">Date</td>
+						<td width="68">Time</td>
+						<td width="314">Event</td>
+					</tr>
+
+					{exp:query sql="SELECT ect.title, ect.url_title, ecd.field_id_110 AS start_date, ecd.field_id_111 AS end_date FROM exp_channel_titles AS ect LEFT JOIN exp_channel_data AS ecd ON ect.entry_id = ecd.entry_id WHERE ecd.field_id_110 > UNIX_TIMESTAMP(CURDATE()) AND ect.status = 'open' ORDER BY ecd.field_id_110 ASC LIMIT 5"}
+
+					<tr class="{switch='void|calstripe'}">
+						<td>{start_date format="%l, %F %j"}</td>
+						<td>{if "{start_date format='%i'}" == "00"}{start_date format="%g"}{if:else}{start_date format="%g:%i"}{/if}{if "{start_date format='%a'}" == "am"} a.m.{if:else} p.m.{/if}</td>
+						<td> <a href="{site_url}news_events_media/events/{url_title}">{exp:char_limit total="100"}{title}{/exp:char_limit} &rsaquo;</a></td>
+					</tr>
+
+					{/exp:query}
+        
+				</tbody>
+			</table>
+
+			{exp:channel:entries entry_id="14871"}
+
+			<p class="allnews">
+				<a href="{site_url}news_events_media/events" class="calAllEvents">All UMass Boston Events &rsaquo;</a>
+			</p>
+		</div><!-- end calTopmargin -->
+
+		
+		<div class='grid_5 videomargin'>
+			<div class="padTB10">
+				<h2 class="itmTitle">Featured Video</h2>
+				<br />
+				{nf_video}
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+		<div class="grid_4 inMediahpList">
+			<h2 class="itmTitle">In the Media</h2>
+
+			<ul id="inMediahp">
+				<div class="clear"></div>
+				{nf_itm}
+					<li>
+						<a  href="{cell_3}"> 
+							<img src="{cell_1}" width="37" height="37" alt="{cell_4}" />
+							{exp:char_limit total="90"}{cell_2}{/exp:char_limit}  &rsaquo;
+						</a>
+					</li>
+					<div class="clear"></div>
+				{/nf_itm}
+			</ul>
+
+			<p class="allnews">
+				<a href="/news_events_media/in_the_media/">All In the Media<span>&nbsp;&rsaquo;</span></a>
+			</p>
+
+			<div class="gBdr"></div>
+
+			{exp:channel:entries entry_id="14871"}
+				{image_sport}         
+					<a  href="{cell_3}">
+						<img src="{cell_1}" width="246" height="262" alt="{cell_4}" />
+					</a>
+					<div class="cap1">
+						<a  href="{cell_3}">{cell_2} &rsaquo;</a>
+					</div>
+				{/image_sport}
+			{/exp:channel:entries}
+
+		</div>
+                                                                
+		<div class='grid_4 itm w246'>
+			<h2>Twitter</h2>
+			<div id="TwitterPanels" class="TabbedPanels"><!--begin tabs box-->
+ 
+				<ul class="TabbedPanelsTabGroup">
+				    {!-- <li class="TabbedPanelsTab" tabindex="0">News</li> --}
+				    <li class="TabbedPanelsTab" tabindex="0" style="width: 100px;">UMass Boston</li>
+				    <li class="TabbedPanelsTab" tabindex="0" style="width: 100px;">Athletics</li>
+				</ul>
+
+				<div class="TabbedPanelsContentGroup"><!--begin content box-->
+
+					{!--
+				    <div class="TabbedPanelsContent xHeight"><!-- open 1 -->
+					    <div id="feed1" class="scroll-pane xHeight"><!-- open feed1 --> 
+							{exp:twitter:user screen_name="umassbostonnews" limit="2"}
+								<ul>
+									<li class="twtitle">
+										{created_at format="%m-%d %g:%i"} by 
+										<a href="https://twitter.com/UMassBostonNews">@UMass Boston News:</a> 
+									</li>
+									<li>
+										@UMass Boston News: {text}
+									</li>
+								</ul>
+							{/exp:twitter:user} 
+						</div><!-- close feed1 -->
+				    </div><!-- close 1 -->
+    				--}
+
+    				<div class="TabbedPanelsContent xHeight ">
+						<div id="feed2" class="scroll-pane xHeight"><!-- open feed1 -->
+							{exp:twitter:user screen_name="umassboston" limit="2"}
+								<ul>
+									<li class="twtitle">
+										{created_at format="%m-%d %g:%i"} by 
+										<a href="https://twitter.com/UMassBoston">@UMass Boston Admissions:</a>
+									</li>
+									<li>
+										@UMass Boston : {text}
+									</li>
+								</ul>
+							{/exp:twitter:user} 
+					    </div><!-- close 1 -->
+    				</div>
+    
+    				<div class="TabbedPanelsContent xHeight">
+						<div id="feed3" class="scroll-pane xHeight"><!-- open feed1 -->
+							{exp:twitter:user screen_name="UMassBeacons" limit="2"}
+								<ul>
+									<li class="twtitle">
+										{created_at format="%m-%d %g:%i"} by 
+										<a href="https://twitter.com/UMassBeacons">@UMass Boston Athletics:</a>
+									</li>
+									<li>
+										@UMass Boston Athletics: {text}
+									</li>
+								</ul>
+							{/exp:twitter:user}    
+    					</div><!-- close 1 --> 
+    				</div>
+ 
+				</div><!--end content box-->
+
+			</div><!--end tabs box-->
+
+			<script type="text/javascript">
+				<!--
+				var TabbedPanels1 = new Spry.Widget.TabbedPanels("TwitterPanels");
+				//-->
+			</script>
+
+			{/exp:channel:entries}
+
+			<div class="clear"></div>
+
+			<h2 class="bmargin10">Beacons Athletics</h2>
+			<ul class="sportsList">
+				{exp:rss_parser url="http://www.beaconsathletics.com/landing/headlines-featured?feed=rss_2.0" limit="3" refresh="720"}
+					{feed_items}
+						<li><a href="{item_link}">{item_title}</a></li>
+					{/feed_items}
+				{/exp:rss_parser}
+			</ul>
+
+			<p class="allnews">
+				<a href="http://www.beaconsathletics.com" class="calAllEvents">
+					All Sports Headlines &nbsp;&rsaquo;
+				</a>
+			</p>
+
+			<div class="clear"></div>
+			<div class="gBdr"></div>
+
+			<h2 class="bmargin10">Connect</h2>
+			<a href="https://www.facebook.com/umassboston">
+				<img class="nlIcons" src="/assets/news/facebook_march2013_35x35.png" />
+			</a>
+			<a href="https://twitter.com/UMassBoston">
+				<img class="nlIcons" src="/assets/news/twitter_march2013_35x35.png" />
+			</a>
+			<a href="http://instagram.com/umassboston">
+				<img class="nlIcons" src="/assets/news/instagram_march2013_35x35.png" />
+			</a>
+			<a href="http://www.flickr.com/photos/umass_boston/collections/">
+				<img class="nlIcons" src="/assets/news/flickr_march2013_35x35.png" />
+			</a>
+			<a href="https://plus.google.com/+umassboston/posts">
+				<img class="nlIcons" src="/assets/news/googleplus_march2013_35x35.png" />
+			</a>
+			<a href="http://www.itunesu.umb.edu/">
+				<img class="nlIcons" src="/assets/news/itunes_march2013_115x35.png" />
+			</a>
+			<a href="{site_url}news_events_media/social_media/rss_feeds">
+				<img class="nlIcons" src="/assets/news/rss_march2013_35x35.png" />
+			</a>
+			<a href="http://www.youtube.com/umassboston">
+				<img class="nlIcons" src="/assets/news/youtube_march2013_35x35.png" />
+			</a>
+			<a href="https://soundcloud.com/umassboston">
+				<img class="nlIcons" src="/assets/news/soundcloud_aug2013_35x35.png" />
+			</a>
+
+		</div>
+
+		<div class="grid_4 itm w368">
+
+			{exp:channel:entries entry_id="14871" disable="categories|member_data|pagination"}
+				<div class="bGray">
+					{nf_image2}   
+						<a href="{cell_3}"> 
+							<img src="{cell_1}" width="150" height="132" alt="{cell_4}" id="moduleImg"/>
+						</a>
+						<p id="module">
+							<a href="{cell_3}">{exp:char_limit total="198"}{cell_2}{/exp:char_limit}</a>
+						</p>
+					{/nf_image2}
+				</div>
+				<br /><br />
+			{/exp:channel:entries}
+
+			<div class="gBdr"></div>
+
+			<h2 class="bmargin10">Construction Updates</h2>
+															
+			<ul class="constructList">
+																				
+				{exp:channel:entries channel="construction_updates" limit="3" disable="categories|custom_fields|member_data|pagination" dynamic="no"}
+					<li>
+						{!--<a href="{site_url}news_events_media/news/construction/{url_title}">{title}</a>--causes error--}
+                        <a href="{site_url}news/detail/{url_title}">{title}</a>
+					</li>
+				{/exp:channel:entries}
+			</ul>
+
+			<p class="allnews">
+				<a href="/news_events_media/construction/" class="calAllEvents">All Construction Updates&nbsp;&rsaquo;</a>
+			</p>
+
+			<br />
+
+			<div class="gBdr"></div>
+
+			{exp:channel:entries entry_id="14871" disable="categories|member_data|pagination"}
+				<div class="cj">
+					<h2>Commonwealth Journal</h2>
+					<ul>
+					{nf_journal}
+						<li class="cjimg">
+							<a href="http://wumb.org" target="_blank">
+								<img src="{cell_1}" width="120" height="120" alt="{cell_4}" />
+							</a>
+						</li>
+						<li class="cjtext"> 
+							<p class="cjdate">{cell_2}</p>
+					{/nf_journal}   
+						  
+						    <p class="allnews">
+						    	<a href="https://itunes.apple.com/itunes-u/commonwealth-journal-wumb/id526399224">
+						    		Download the podcast &rsaquo;
+						    	</a>
+						    </p>
+						</li>
+					 </ul>
+				</div>
+			{/exp:channel:entries}
+
+			<div class="clear"></div>
+
+		</div>
+
+		<div class="clear"></div>
+
+
+	<!-- TEMPLATE: END -->
+	{embed="embeds/.news_footer"}
+	{embed="embeds/.news_footer_scripts"}
+        <div class="clear"></div>
+    </div>
+    {analytics}{!-- snippet --}

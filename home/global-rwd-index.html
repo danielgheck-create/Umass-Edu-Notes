@@ -1,0 +1,54 @@
+{embed="default_site:global-rwd/global-head" stylesheet="/assets/kube/css/home.css?a={current_time}"}
+<div id="load_global_alert"></div>
+{embed="default_site:global-rwd/global-nav-home" color="blue"}
+
+{exp:channel:entries channel="home_page_rwd" limit="1"}
+<div class="home-masthead" style="background: #005a8b url('{home_hero_image}')  no-repeat  center center; background-size: cover;">
+    <div class="main-nav blue-trans blue">
+        <div class="main-nav-inner">
+            <nav class="navbar navbar-collapse nav-fullwidth navbar-main " id="navigation" >
+                <ul class="nav navbar-nav" >
+                    <li><a href="/admissions" >Admissions &amp; Aid</a></li>
+                    <li><a href="/academics" >Academics</a></li>
+                    <li><a href="/research" >Research</a></li>
+                    <li><a href="/athletics" >Athletics</a></li>
+                    <li><a href="/the_university" >About</a></li>
+                    <li><a href="/giving">Give</a></li>
+                    <li>
+                        <a data-tools="dropdown" data-target="#dropdown-info-for" href="#" >Info For:</a>
+                        <ul id="dropdown-info-for" class="dropdown">
+                            <li><a href="/life_on_campus ">Students</a></li>
+                            <li><a href="/families">Parents & Families</a></li>
+                            <li><a href="/faculty_staff">Faculty & Staff</a></li>
+                            <li><a href="http://www.alumni.umb.edu">Alumni</a></li>
+                            <li><a href="/in_the_community">Community</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="masthead-inner container">
+        <div class="tag-line">
+            {if home_hero_link > ""}
+            <p><a href="{home_hero_link}">{home_hero_caption} <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+            {if:else}
+            <p>{home_hero_caption}</p>
+            {/if}
+        </div>
+    </div>
+</div>
+
+<main id="content" class="units-row end home" >
+    <div class="unit-100">
+    {embed="default_site:modules/tiles" columns="3" tile_field="tiles" entry_id="{entry_id}" site_category="3|94"}
+    </div>
+</main>
+{/exp:channel:entries}
+<!-- tracking pixel for enrollment management -->
+<script async src="https://i.simpli.fi/dpx.js?cid=73494&conversion=40&campaign_id=0&m=1&sifi_tuid=42288"></script>
+
+<!-- VisitDay -->
+<script data-mobi-subdomain="umb" async src="https://mobi.visitdays.com/assets/snippet/assets/main.bundle.js"></script>
+{embed="default_site:global-rwd/global-footer" }

@@ -1,0 +1,44 @@
+{preload_replace:url_recent_news="/news_events_media/news"}
+{preload_replace:url_events="/news_events_media/events"}
+{preload_replace:url_publications="/news_events_media/publications"}
+{preload_replace:url_videos="/news_events_media/videos"}
+{preload_replace:url_wumb="/news_events_media/wumb"}
+{preload_replace:url_for_the_media="/news_events_media/communications/for_the_media"}
+{preload_replace:url_communications="/news_events_media/communications"}
+{preload_replace:url_connect="/news_events_media/social_media"}
+
+<div class="grid_12">
+    <a href="/news_events_media"><img class="logoMargin" src="/assets/news/logoFG.png" alt="UMass Boston News"></a>
+
+    <div class="search">
+            <form id="searchbox_001225130692263366863:uxj4oosyzxy" action="{site_url}news/search">
+            <p>
+              <input value="001225130692263366863:uxj4oosyzxy" name="cx" type="hidden"/>
+              <input value="FORID:11" name="cof" type="hidden"/>
+              <input id="keywords" name="q" type="text" placeholder="Search news, events, media" value="" />
+            </p>
+              <input alt="Search" id="search_input" name="search" src="{site_url}assets/styles/images/buttons/search_submit-005A8C_2.png" type="image" value="Submit">
+            </form>
+    </div><!--// end search //-->
+</div>
+
+<div class="clear"></div>
+
+<div class="grid_12">
+    <div id="navcontainer">
+        <ul id="navlist">
+{!-- NAV:BEGIN --}
+  <li><a href="{url_recent_news}">Recent News</a>
+  <li><a href="{url_events}">Events</a>
+  <li><a href="{url_publications}">Publications</a>
+  <li><a href="{url_videos}">Videos</a>
+  <li><a href="{url_wumb}">WUMB</a>
+  <li><a href="{url_for_the_media}">For the Media</a>
+  <li><a href="{url_communications}">Office of Communications</a>
+  <li><a href="{url_connect}">Connect</a>
+  <li><a href="/">Home</a>
+{!-- NAV:ENDS --}
+        </ul>
+    </div>
+</div>
+<div class="clear"></div>

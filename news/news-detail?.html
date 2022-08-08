@@ -1,0 +1,274 @@
+{exp:channel:entries
+  url_title="{segment_3}"
+  channel="news|construction_updates|the_point|umbminute"
+  status="open"
+  dynamic="no"
+  disable="member_data|pagination"
+  limit="1"}
+
+{if no_results}
+  {redirect="404"}
+{/if}
+{exp:ce_cache:stat:ic for="0" tags="{entry_id}"}
+{embed="news/header_rwd" entry_id="{entry_id}"}
+
+<div id="content" class="all units-row">
+  <div class="unit-75">
+
+      {if channel_name == 'the_point'}
+      <h1 class="detail-title">
+          {title} HELLO
+      </h1>
+      <div id="author">
+          <strong>
+              {if author_the_point}
+              <author>
+                  {author_the_point} |
+              </author>
+              {/if}
+              <date>{exp:umbdate format="{entry_date format='%F %d, %Y'}"}</date>
+          </strong>
+      </div>
+      <figure>
+          {exp:ce_img:single
+              src="{image_the_point limit='1'}{large_img}{/image_the_point}"
+              fallback_src="/assets/images/wabi/new-logo-mark-gray-newsfallback_760x400.png"
+              alt="{if caption_the_point}{caption_the_point}{/if}
+              {if caption_the_point==""}{title}{/if}"
+              title="{if caption_the_point}{caption_the_point}{/if} {if caption_the_point==""}{title}{/if}"
+              allow_scale_larger="no"
+              crop="yes"}
+      </figure>
+      <figcaption>
+          <p>
+              {if caption_the_point}
+                  {caption_the_point}<br/>
+              {/if}
+              {image_the_point}{if ph_name}
+                  Image by: {ph_name}
+              {/if}{/image_the_point}
+          </p>
+      </figcaption>
+
+      {if the_point_quote}
+      <div class="pull-quote">
+          <div class="left-quote"><br/><hr/></div>
+          <p class="detail-quote">{the_point_quote}</p>
+          <div class="right-quote"><br/><hr/></div>
+      </div>
+      {/if}
+
+
+      {if "{soundcloud_url}" != ""}
+      <!-- start soundcloud -->
+      <p>
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url={soundcloud_url}&amp;color=D47600amp;auto_play=false&amp;show_artwork=false"></iframe>
+      </p>
+      <!-- end soundcloud -->
+      {/if}
+
+
+      <!-- start body content -->
+      <article>
+          {body_text_the_point}
+      </article>
+      <!-- end body content -->
+
+      <!-- end the point -->
+      {if:else}
+      <!-- start news -->
+      <h1 class="detail-title">
+          {title}
+      </h1>
+      <div id="author">
+          <strong>
+              {if author_news}
+              <author>
+                  {author_news} |
+              </author>
+              {/if}
+              {if date_news}
+              <date>
+                  {date_news format="%F %d, %Y"}
+              </date>
+              {/if}
+          </strong>
+      </div>
+      <figure>
+          {!-- 
+          {exp:ce_img:single
+              src="{image_news limit="1"}{image_src_new}{/image_news}"
+              fallback_src="/assets/images/wabi/new-logo-mark-gray-newsfallback_760x400.png"
+              alt="{if caption_news}{caption_news}{/if} {if caption_news==""}{title}{/if}"
+              title="
+              {if caption_news}{caption_news}{/if}
+              {if caption_news==""}{title}{/if}
+              {image_news}{if image_photographer}- Image by: {image_photographer}{/if}{/image_news}"
+              allow_scale_larger="no"
+              crop="yes"}
+          --}            
+              {exp:ce_img:single
+                  src="{image_news limit="1"}{image_src_new}{/image_news}"
+                  fallback_src="/assets/images/wabi/new-logo-mark-gray-newsfallback_760x400.png"
+                  alt="{if image_news}{image_news}{image_alt}{/image_news}{/if} {if image_news==""}{title}{/if}"
+                  title="
+                  {if caption_news}{caption_news}{/if}
+                  {if caption_news==""}{title}{/if}
+                  {image_news}{if image_photographer}- Image by: {image_photographer}{/if}{/image_news}"
+                  allow_scale_larger="no"
+                  crop="yes"}
+
+      </figure>
+      {if caption_news || image_news}
+      <figcaption><p>
+              {if caption_news}
+                  {caption_news}<br/>
+              {/if}
+
+              {image_news}{if image_photographer}
+                  Image by: {image_photographer}
+              {/if}{/image_news}
+          </p></figcaption>
+      {/if}
+
+      {if news_quote}
+      <div class="pull-quote">
+          <div class="left-quote"><br/><hr/></div>
+          <p class="detail-quote">{news_quote}</p>
+          <div class="right-quote"><br/><hr/></div>
+      </div>
+      {/if}
+
+      <!-- start soundcloud -->
+      {if "{soundcloud_url}" != ""}
+      <p>
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url={soundcloud_url}&amp;color=D47600amp;auto_play=false&amp;show_artwork=false"></iframe>
+      </p>
+      {/if}
+      <!-- end soundcloud -->
+
+      <!-- start main content -->
+      <article>
+          {body_text_news}
+      </article>
+      <!-- end main content -->
+
+      {/if}
+      <!-- end news -->
+
+      <!-- start comment form -->
+      {if allow_comments}
+      {exp:comment:form
+          channel="{channel_name}"
+          entry_id="{entry_id}"
+          class="forms"}
+      <section class="comment-form" name="comment-form" aria-label="comment form">
+          <h3>Comment on this story</h3>
+          <label for="comment">Your Comment</label>
+          <textarea id="comment" rows="4" title="Add Comments Here" name="comment">{comment}</textarea>
+          <row>
+              <column cols="6">
+                  <label for="name">Your Name</label>
+                  <input id="name" type="text" title="Please Enter Your Name" name="name"/>
+              </column>
+              <column cols="6">
+                  <label for="email">Your Email</label>
+                  <input id="email" type="email" title="Please Enter Your Email" name="email"/>
+              </column>
+          </row>
+          <p id="submit_btn">
+              <input type="submit" class="btn" value="Submit" name="submit" />
+          </p>
+      </section>
+      {/exp:comment:form}
+
+
+      <!--<script type="text/javascript" src="/assets/scripts/jquery-1.7.2.js"></script>-->
+      <script type="text/javascript" src="/assets/scripts/jquery.validate/jquery.validate.min.js"></script>
+      <script type="text/javascript" src="/assets/scripts/jquery.validate/lib/jquery.metadata.js"></script>
+      <script type="text/javascript" src="/assets/scripts/jquery.validate/additional-methods.min.js"></script>
+      <!--<script type="text/javascript" src="/assets/scripts/ui/jquery.ui.core.js"></script> -->
+
+      <!-- js validation for comments -->
+      <script type="text/javascript">
+          //validation
+          $.metadata.setType("attr", "validate");
+          $(document).ready(function(){
+              $("#comment_form").validate({
+                  rules : {
+                      email: { required : true,email:true },
+                      name: { required : true },
+                      comment: { required : true }
+                  },
+                  messages:{
+                      email: { required: "Please enter a valid email address." }
+                  }
+              });
+          });
+      </script>
+
+      {if:else}
+      <h3 class="hide">Comments not allowed for this story</h3>
+      {/if}
+      <!-- end comment form -->
+
+      <!-- start comments -->
+      {if allow_comments}
+      <h4>Comments ({comment_total})</h4>
+      <div>
+          {exp:comment:entries channel="news" sort="desc" orderby="date"  dynamic="no" url_title="{segment_3}" disable="categories|member_data|pagination"}
+          <p>
+              <strong>
+                  Posted by <i>{name}</i> |
+                  {exp:low_replace find="am|pm" replace="a.m.|p.m." multiple="yes"}
+                  {comment_date format='%F %d, %Y - %g:%i %a'}
+                  {/exp:low_replace}
+              </strong>
+              <br/> {comment}
+          </p>
+          <hr/> {/exp:comment:entries}
+      </div>
+      {/if}
+      <!-- end comments -->
+
+  </div>
+
+  <div style="height: 25px; margin-bottom: 1.65em;"></div>
+  <div class="unit-25">
+      <!-- start sidebar -->
+      {if channel_name == "construction_updates"}
+      {embed="news/sidebar" section="details_general" expand_cu="yes"}
+      {if:else}
+      {embed="news/sidebar" section="details_general"}
+      {/if}
+      <!-- end sidebar -->
+
+
+      {if channel_name == "the_point" && other_stories_the_point}
+      <div class="sidebar">
+          <h4 id="also-in-this">Also in this issue:</h4>
+          <ul id="also-in">
+              {other_stories_the_point limit="5"}
+              <li><a href="{path='news/detail/{url_title}'}" alt="{title}">{title}</a></li>
+              {/other_stories_the_point}
+          </ul>
+      </div>
+      {/if}
+
+
+      <!-- start share -->
+      <div class="sidebar share">
+          <div id="share-story">
+              <h4>Share This Story:</h4>
+
+              {exp:hj_social_bookmarks class="blocks-4" sites="Facebook|Twitter|LinkedIn" entry_id="{entry_id}"}
+
+          </div>
+      </div>
+      <!-- end share -->
+
+  </div>
+</div>
+{/exp:channel:entries}
+
+{embed="news/footer_rwd"}
